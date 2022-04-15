@@ -15,7 +15,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link rel="stylesheet" href="Asset/css/style.css" />
+  <link rel="stylesheet" href="Asset/css/style.css"/>
   <link rel="shortcut icon" href="#" />
   <script src="https://kit.fontawesome.com/54c91e5a63.js" crossorigin="anonymous"></script>
   <title>Home | Holy Florist</title>
