@@ -1,0 +1,38 @@
+.sidebar,
+.main-content {
+  margin-top: 30px;
+}
+
+.sidebar {
+  background-color: lightgreen;
+}
+
+.main-content {
+  background-color: lightblue;
+  padding: 0;
+}
+
+.sidebar > ul {
+  margin: 30px 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.barang {
+  margin: 20px 0px;
+}
+
+.card {
+  /* margin-left: -10px; */
+  border: 1px solid blue;
+}
+
+.search-bar {
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 760px) {
+  .sidebar {
+    display: none;
+  }
+}
