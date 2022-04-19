@@ -1,5 +1,6 @@
 <?php
     session_start();
+    date_default_timezone_set('Asia/Bangkok');
     require 'connection.php';
     $idbarang = $_GET['id'];
     $iduser = $_SESSION['ID'];
@@ -49,10 +50,33 @@
         }
     }else{
         // jika belum ada order id
+        $time = date('YmdHms');
+        $newOrderID = "PO-".$time;
+        
+        $sqlCartBaru = mysqli_query($conn, "INSERT INTO cart (id_order, id_user) VALUES ('$newOrderID', '$iduser')");
+
+        if($sqlCartBaru){
+            $sqlDetailCart = mysqli_query($conn, "INSERT INTO detail_cart (id_order, id_produk, qty) VALUES ('$newOrderID', $idbarang, 1)");
+
+            if($sqlDetailCart){
+                header('location: ../cart.php');
+            }else{
+                echo 
+                "
+                    <div class='alert alert-success'>
+                        Gagal menambahkan ke keranjang
+                    </div>
+                    <meta http-equiv='refresh' content='3; url= ../page-detail.php?id=".$idbarang."'/>
+                ";
+            }
+        }else{
+            echo 
+                "
+                    <div class='alert alert-success'>
+                        Gagal menambahkan ke keranjang
+                    </div>
+                    <meta http-equiv='refresh' content='3; url= ../page-detail.php?id=".$idbarang."'/>
+                ";
+        }
     }
-
-    var_dump($updateQty);
-
-
-
 ?>
