@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require "PHP/load-cart.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +33,33 @@
                             Harga
                         </th>
                     </tr>
+                    <?php $totalHarga=0;$i=0;foreach ($listCart as $cart):?>
                     <tr>
+                        <td class="text-center">
+                            <img src="Asset/img/barang/<?= $barang[$i]['gambar'] ?>" class="item-image-home"></img>
+                        </td>
+                        <td>
+                            <?= $barang[$i]['nama'] ?>
+                        </td>
+                        <td>
+                            <label for="">Rp</label>
+                            <p>
+                                <?= number_format($barang[$i]['harga']) ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php $totalHarga+=$barang[$i]['harga'];$i++;endforeach; ?>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <label for="">Rp</label>
+                            <p>
+                                <?= number_format($totalHarga) ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- <tr>
                         <td class="text-center">
                             <img src="Asset/img/img_1-1.jpg" class="item-image-home"></img>
                         </td>
@@ -42,7 +72,7 @@
                                 250.000
                             </p>
                         </td>
-                    </tr>
+                    </tr> -->
                 </table>
                 <div class="text-right button-area">
                     <a href="#" class="succes-button">

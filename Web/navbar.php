@@ -9,7 +9,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="cart.php">
                         <i class="fas fa-shopping-bag"></i>
                     </a>
                 </li>

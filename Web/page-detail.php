@@ -27,7 +27,7 @@
     <!-- Body -->
     <section class="section-1-page-detail mb-5 pt-5">
         <div class="container-page-detail mx-auto">
-            <form  method="post" id="form-pesan-barang">
+            <form  method="post" action="PHP/add-cart.php?id=<?=$idbarang?>" id="form-pesan-barang">
                 <div class="row gx-5">
                     <div class="col-md-7">
                         <img src="Asset/img/barang/<?= $barang['gambar'] ?>" alt="" class="w-100">
@@ -82,14 +82,14 @@
                                         </h5>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="date" class="form-control" name="tanggal" required>
+                                                <input type="date" id="tanggal-pengiriman" class="form-control" name="tanggal" min="" required>
                                             </div>
                                             <div class="col">
                                                 <select class="form-select " aria-label="Default select example" name="jam">
                                                     <option hidden selected>Pilih Jam Disiini</option>
-                                                    <option value="1">1pm - 22 pm</option>
-                                                    <option value="2">1pm - 22 pm</option>
-                                                    <option value="3">1pm - 22 pm</option>
+                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
+                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
+                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
                                                 </select>
                                             </div>
                                         </div>
