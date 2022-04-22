@@ -35,9 +35,7 @@
           <div class="section-home-main">
             <div class="row justify-content-center gx-4 gy-2">
               <?php 
-                for ($i=0; $i < count($listBarang); $i++): { 
-                  # code...
-                }
+                for ($i=0; $i < count($listBarang); $i++):
               ?>
               <div class="col-md-3">
                 <div class="post-container position-relative">

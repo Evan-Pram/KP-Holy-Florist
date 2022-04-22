@@ -19,7 +19,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="http://"><b>Holy Florist</b></a>
+            <a href="index.php"><b>Holy Florist</b></a>
         </div>
         <div class="login-card">
             <div class="login-card-msg mb-3">

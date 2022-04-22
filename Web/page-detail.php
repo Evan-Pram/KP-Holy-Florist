@@ -40,73 +40,6 @@
                             Rp. <?= number_format($barang['harga']) ?>
                         </h3>
                         <div class="accordion" id="accordionExample">
-                            
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <!--PICKUP /--> DELIVERY DETAIL <!-- bisa berubah sesuai jenis --->
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <h5 class="accordion-title-detail">
-                                            Delivery Option
-                                        </h5>
-                                        <!-- <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1" checked>
-                                            <div class="radio-button-content">
-                                                <p>
-                                                    Delivery
-                                                </p>
-                                                <i class="fas fa-truck"></i>
-                                            </div>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2">
-                                            <div class="radio-button-content">
-                                                <p>
-                                                    Pickup
-                                                </p>
-                                                <i class="fas fa-store-alt"></i>
-                                            </div>
-                                        </div> -->
-                                        <p class="delivery-detail-text">
-                                            Surabaya surrounding area only
-                                        </p>
-                                        <h5 class="accordion-title-detail">
-                                            Delivery Date:
-                                        </h5>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="date" id="tanggal-pengiriman" class="form-control" name="tanggal" min="" required>
-                                            </div>
-                                            <div class="col">
-                                                <select class="form-select " aria-label="Default select example" name="jam">
-                                                    <option hidden selected>Pilih Jam Disiini</option>
-                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
-                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
-                                                    <option value="1pm - 22pm">1pm - 22 pm</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <label for="">
-                                            *Note Muncul Disini
-                                        </label>
-                                        <h5 class="accordion-title-detail mt-2">
-                                            Sender Name
-                                        </h5>
-                                        <input type="text" class="form-control w-100" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="sender name" name="senderName" required>
-                                        <h5 class="accordion-title-detail mt-2">
-                                            Sender Phone
-                                        </h5>
-                                        <input type="number" class="form-control w-100 mb-4" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="sender number" name="senderNumber" required>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -114,7 +47,7 @@
                                         Message on board to be printed
                                     </button>
                                 </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <h5 class="accordion-title-detail mt-2">
@@ -275,8 +208,6 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="Asset/js/jquery-3.6.0.js"></script>
-    <!-- script untuk form -->
-    <script src="Asset/js/page-detail-form.js"></script>
 </body>
 
 </html>

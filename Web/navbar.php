@@ -8,11 +8,13 @@
                         <i class="fas fa-search"></i>
                     </a>
                 </li>
-                <li>
-                    <a href="cart.php">
-                        <i class="fas fa-shopping-bag"></i>
-                    </a>
-                </li>
+                <!-- <li>
+                    <?php if(isset($_SESSION['userLoged'])): ?>
+                        <a href="cart.php">
+                            <i class="fas fa-shopping-bag"></i>
+                        </a>
+                    <?php endif; ?>
+                </li> -->
                 <li>
                     <?php if(isset($_SESSION["ownerLoged"]) || isset($_SESSION["adminLoged"]) || isset($_SESSION["userLoged"])): ?>
                         <?php if(isset($_SESSION["userLoged"])): ?>
@@ -41,16 +43,6 @@
                     HOME
                 </a>
             </li>
-            <!-- <li>
-                <a href="#">
-                    SHOP
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    CUSTOM ORDER
-                </a>
-            </li> -->
             <li>
                 <a href="#">
                     ABOUT US
@@ -61,6 +53,18 @@
                     CONTACT
                 </a>
             </li>
+            <?php if(isset($_SESSION['userLoged'])): ?>
+            <li>
+                <a href="cart.php">
+                    MY CART
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    MY ORDER
+                </a>
+            </li>
+            <?php endif; ?>
         </ul>
     </div>
 </section>
