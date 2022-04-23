@@ -160,7 +160,7 @@ body{
         color: 06113C;
         border: 1px solid black;
         padding: 4px 12px;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 600;
     }
     td{
@@ -169,14 +169,33 @@ body{
         border: 1px solid black;
         padding: 4px 12px;
         vertical-align: unset;
-        font-size: 20px;
+        font-size: 17px;
         label{
             display: inline-block;
             font-size: 16px;
         }
         p{
             display: inline-block;
-            font-size: 20px;
+            font-size: 16px;
+        }
+        a{
+            text-decoration: none;
+        }
+        button{
+            display: block;
+            width: 100%;
+        }
+        .btn-update{
+            border-bottom:none;
+        }
+        .btn-update:hover{
+            background-color: #DDDDDD;
+        }
+        .btn-hapus{
+            border-top: none;
+        }
+        .btn-hapus:hover{
+            background-color: #DDDDDD;
         }
     }
     .text-center{
@@ -184,10 +203,22 @@ body{
         vertical-align: middle;
     }
     .image-container-cart{
-        width: 350px;
+        width: 15%;
+    }
+    .item-container-cart{
+        width: 20%;
+    }
+    .printed-msg-container{
+        width: 20%;
+    }
+    .printed-sender-container{
+        width: 20%;
+    }
+    .price-container-cart{
+        width: 10%;
     }
     .item-image-home{
-        height: 250px;
+        width: 100%;
     }
     .text-right.button-area{
         text-align: right;
@@ -227,8 +258,15 @@ body{
     .total-harga{
       text-align: right; 
       label{
-          font-size: 2rem;
+          font-size: 20px;
       }
+    }
+    .no-cart{
+        font-size: 20px;
+        padding: 20px;
+    }
+    .nominal-total-harga{
+        font-size: 20px;
     }
     .modal{
         .accordion-title-detail{

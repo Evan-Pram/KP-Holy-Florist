@@ -238,7 +238,7 @@ body {
   color: 06113C;
   border: 1px solid black;
   padding: 4px 12px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 600;
 }
 .section-1-cart td {
@@ -247,7 +247,7 @@ body {
   border: 1px solid black;
   padding: 4px 12px;
   vertical-align: unset;
-  font-size: 20px;
+  font-size: 17px;
 }
 .section-1-cart td label {
   display: inline-block;
@@ -255,17 +255,48 @@ body {
 }
 .section-1-cart td p {
   display: inline-block;
-  font-size: 20px;
+  font-size: 16px;
+}
+.section-1-cart td a {
+  text-decoration: none;
+}
+.section-1-cart td button {
+  display: block;
+  width: 100%;
+}
+.section-1-cart td .btn-update {
+  border-bottom: none;
+}
+.section-1-cart td .btn-update:hover {
+  background-color: #DDDDDD;
+}
+.section-1-cart td .btn-hapus {
+  border-top: none;
+}
+.section-1-cart td .btn-hapus:hover {
+  background-color: #DDDDDD;
 }
 .section-1-cart .text-center {
   text-align: center;
   vertical-align: middle;
 }
 .section-1-cart .image-container-cart {
-  width: 350px;
+  width: 15%;
+}
+.section-1-cart .item-container-cart {
+  width: 20%;
+}
+.section-1-cart .printed-msg-container {
+  width: 20%;
+}
+.section-1-cart .printed-sender-container {
+  width: 20%;
+}
+.section-1-cart .price-container-cart {
+  width: 10%;
 }
 .section-1-cart .item-image-home {
-  height: 250px;
+  width: 100%;
 }
 .section-1-cart .text-right.button-area {
   text-align: right;
@@ -306,7 +337,14 @@ body {
   text-align: right;
 }
 .section-1-cart .total-harga label {
-  font-size: 2rem;
+  font-size: 20px;
+}
+.section-1-cart .no-cart {
+  font-size: 20px;
+  padding: 20px;
+}
+.section-1-cart .nominal-total-harga {
+  font-size: 20px;
 }
 .section-1-cart .modal .accordion-title-detail {
   font-size: 14px;

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require "PHP/load-cart.php";
+    require "PHP/load-pembayaran.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,82 +27,110 @@
         <section class="section-1-cart">
             <div class="container-md mx-auto">
                 <table class="w-100 table=cart">
-                    <tr>
+                    <tr class="table-head">
                         <th class="image-container-cart">
                             Gambar
                         </th>
                         <th class="text-area item-container-cart">
-                            Nama Barang
+                            Barang
+                        </th>
+                        <th class="text-area printed-msg-container">
+                            Pesan
+                        </th>
+                        <th class="text-area printed-sender-container">
+                            Dari
                         </th>
                         <th class="text-area price-container-cart">
                             Harga
                         </th>
+                        <th class="action-button-container">
+                            Aksi
+                        </th>
                     </tr>
                     <?php if($noCart): ?>
-                        <tr>
-                            <td colspan='3' class="text-center">
-                                Tida ada barang dalam Keranjang
-                            </td>
-                        </tr>
+                    <tr>
+                        <td colspan='6' class="text-center no-cart">
+                            Tidak ada barang dalam Keranjang
+                        </td>
+                    </tr>
                     <?php else: ?>
-                        <?php $totalHarga=0;$i=0;foreach ($listCart as $cart):?>
-                        <tr>
-                            <td class="text-center">
-                                <img src="Asset/img/barang/<?= $barang[$i]['gambar'] ?>" class="item-image-home"></img>
-                            </td>
-                            <td>
-                                <?= $barang[$i]['nama'] ?>
-                            </td>
-                            <td>
-                                <label for="">Rp</label>
-                                <p>
-                                    <?= number_format($barang[$i]['harga']) ?>
-                                </p>
-                            </td>
-                        </tr>
-                        <?php $totalHarga+=$barang[$i]['harga'];$i++;endforeach; ?>
-                        <tr>
-                            <td colspan='2' class='total-harga'>
-                                <label for="">Total Harga</label>
-                            </td>
-                            <td>
-                                <label for="">Rp</label>
-                                <p>
-                                    <?= number_format($totalHarga) ?>
-                                </p>
-                            </td>
-                        </tr>
+                    <?php $totalHarga=0;$i=0;foreach ($listCart as $cart):?>
+                    <tr>
+                        <td class="text-center">
+                            <img src="Asset/img/barang/<?= $barang[$i]['gambar'] ?>" class="item-image-home"></img>
+                        </td>
+                        <td>
+                            <?= $barang[$i]['nama'] ?>
+                            <?php if($barang[$i]['jenis'] == 'Papan Bunga'): ?>
+                            <br>model : <?= $barang[$i]['model'] ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <p style="white-space:pre-line">
+                                <?= $cart['msg'] ?>
+                            </p>
+                        </td>
+                        <td>
+                            <?= $cart['msg_from'] ?>
+                        </td>
+                        <td>
+                            <label for="">Rp</label>
+                            <p>
+                                <?= number_format($barang[$i]['harga']) ?>
+                            </p>
+                        </td>
+                        <td>
+                            <div class="rem">
+                                <button class="btn-update" data-bs-toggle="modal" data-bs-target="#modalDetailCart"
+                                    onclick="fillModalDetailCart('<?=$orderID?>', '<?=$cart['id']?>')">update</button>
+                                <a href="PHP/update-cart.php?order=<?=$orderID?>&id=<?=$cart['id']?>&hapus"
+                                    onclick="return confirm('Apakah anda yakin menghapus item dari keranjang')">
+                                    <button class="btn-hapus">hapus</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php $totalHarga+=$barang[$i]['harga'];$i++;endforeach; ?>
+                    <tr>
+                        <td colspan='4' class='total-harga'>
+                            <label for="">Total Harga</label>
+                        </td>
+                        <td colspan='2' class="nominal-total-harga">
+                            <label for="">Rp</label>
+                            <p>
+                                <?= number_format($totalHarga) ?>
+                            </p>
+                        </td>
+                    </tr>
                     <?php endif; ?>
                 </table>
                 <div class="text-right button-area">
                     <?php if($noCart): ?>
-                        <a href="index.php" class="succes-button">
-                            Kembali Belanja
-                        </a>
+                    <a href="index.php" class="succes-button">
+                        Kembali Belanja
+                    </a>
                     <?php else: ?>
-                        <button type="button" class="btn succes-button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            check-out
-                        </button>
-                        <!-- <a href="#" class="succes-button">
-                            beli
-                        </a> -->
-                        <a href="#" class="cancel-button">
-                            Batal
-                        </a>
+                    <button type="button" class="btn succes-button" data-bs-toggle="modal"
+                        data-bs-target="#modalDeliveryDetail" onclick="resetInputFormCheckout()">
+                        check-out
+                    </button>
+                    <a href="#" class="cancel-button">
+                        Batal
+                    </a>
                     <?php endif; ?>
                 </div>
             </div>
 
             <!-- modal delivey detail -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="modalDeliveryDetail" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="">
+                        <form id="form-delivery-detail" action="PHP/check-out-cart.php?id_order=<?=$cart['id_order']?>" method="POST">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Delivery Detail</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <h5 class="accordion-title-detail">
@@ -128,26 +157,72 @@
                                     Nama Pengirim
                                 </h5>
                                 <input type="text" class="form-control w-100 mb-3" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="sender name" name="senderName" required>
+                                    aria-describedby="emailHelp" placeholder="Nama Pengirim" name="namaPengirim"
+                                    required>
                                 <h5 class="accordion-title-detail mt-2">
                                     Nomor HP Pengirim
                                 </h5>
                                 <input type="number" class="form-control w-100 mb-3" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="sender number" name="senderNumber" required>
+                                    aria-describedby="emailHelp" placeholder="Telp. Pengirim" name="telpPengirim"
+                                    required>
+                                <h5 class="accordion-title-detail mt-2 feedback-pembayaran">
+                                    Metode Pembayaran
+                                </h5>
+                                <select class="form-select metode-pembayaran" aria-label="Default select example" name="metodePembayaran">
+                                    <option hidden selected value="">Metode Pembayaran</option>
+                                    <?php foreach($listPembayaran as $metode): ?>
+                                        <option value="<?=$metode['id']?>"><?= $metode['metode'] ?> | <?= $metode['noRek'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                                 <h5 class="accordion-title-detail mt-2">
                                     Alamat Tujuan
                                 </h5>
                                 <input type="text" class="form-control w-100 mb-3" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="sender number" name="senderNumber" required>
+                                    aria-describedby="emailHelp" placeholder="Alamat Tujuan" name="alamat" required>
                                 <h5 class="accordion-title-detail mt-2">
                                     Nama Penerima
                                 </h5>
-                                <input type="number" class="form-control w-100 mb-4" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="sender number" name="senderNumber" required>
+                                <input type="text" class="form-control w-100 mb-4" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Nama Penerima" name="namaPenerima"
+                                    required>
+                                <input type="hidden" name="totalHarga" value="<?= $totalHarga ?>">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Done</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal edit detail cart -->
+            <div class="modal fade" id="modalDetailCart" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="" method='POST' id="form-edit-detail-cart">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Barang Dalam Keranjang</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h5 class="accordion-title-detail mt-2">
+                                    message
+                                </h5>
+                                <textarea class="form-control mb-2 msg" id="exampleFormControlTextarea1" rows="3"
+                                    name="printedMessage" required></textarea>
+                                <h5 class="accordion-title-detail mt-2">
+                                    From
+                                </h5>
+                                <input type="text" class="form-control w-100 mb-5 msg-from" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email" name="printedSender"
+                                    required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </form>
                     </div>
@@ -237,6 +312,8 @@
     <script src="Asset/js/home.js"></script>
     <!-- script untuk form di modal -->
     <script src="Asset/js/form-delivery-detail.js"></script>
+    <!-- script untuk cart.php -->
+    <script src="Asset/js/cart.js"></script>
 </body>
 
 </html>
