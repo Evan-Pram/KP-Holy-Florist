@@ -16,10 +16,13 @@
     $metodePembayaran = intval($_POST['metodePembayaran']);
 
     // bikin PO Baru
-    $sqlAddOrders = mysqli_query($conn, "INSERT INTO orders (id_order, id_user, total_harga, tanggal_pengiriman, nama_pengirim, nomor_pengirim, metode_pembayaran, alamat_tujuan, nama_penerima) 
-                                                    VALUES ('$idorder', $iduser, $totalHarga, '$tanggalKirim', '$namaPengirim', $telpPengirim, $metodePembayaran, '$alamatTujuan', '$namaPenerima')");
+    $sqlAddOrders = mysqli_query($conn, "INSERT INTO orders (id_order, id_user, total_harga, metode_pembayaran) 
+                                                    VALUES ('$idorder', $iduser, $totalHarga, $metodePembayaran)");
 
     if($sqlAddOrders){
+        // bikin detail pengiriman
+        $sqlAddDetailPengiriman = mysqli_query($conn, "INSERT INTO detail_pengiriman (id_order, tgl_pengiriman, nama_pengirim, telp_pengirim, alamat_tujuan, nama_penerima)
+                                                            VALUES ('$idorder', '$tanggalKirim', '$namaPengirim', '$telpPengirim', '$alamatTujuan', '$namaPenerima')");
         // ambil semua barang dari cart
         $sqlDetailCart = mysqli_query($conn, "SELECT * FROM detail_cart WHERE id_order = '$idorder'");
         while($temp = mysqli_fetch_assoc($sqlDetailCart)){
