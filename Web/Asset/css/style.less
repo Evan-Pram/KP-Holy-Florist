@@ -276,6 +276,88 @@ body{
     }
 }
 
+.section-1-order{
+    min-height: 70vh;
+    th{
+        background: #DDDDDD;
+        color: 06113C;
+        border: 1px solid black;
+        padding: 4px 12px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+    td{
+        background: #EEEEEE;
+        color: 06113C;
+        border: 1px solid black;
+        padding: 4px 12px;
+        vertical-align: unset;
+        font-size: 17px;
+        label{
+            display: inline-block;
+            font-size: 16px;
+        }
+        p{
+            display: inline-block;
+            font-size: 16px;
+        }
+    }
+    .list-order{
+        cursor: pointer
+    }
+    .text-center{
+        text-align: center;
+        vertical-align: middle;
+    }
+    .nomor-urut{
+        width: 5%;
+    }
+    .kode-order-container{
+        width: 20%;
+    }
+    .tanggal-pengiriman-container{
+        width: 20%;
+    }
+    .total-harga-container{
+        width: 15%;
+    }
+    .metode-pembayaran-container{
+        width: 20%;
+    }
+}
+
+.section-1-order-detail{
+    .card{
+        form{
+            a{
+                text-decoration: none;
+            }
+        }
+        table{
+            .item-container{
+                width: 30%;
+            }
+            .printed-msg-container{
+                width: 25%;
+            }
+            .printed-sender-container{
+                width: 25%;
+            }
+            .harga-container{
+                width: 20%;
+            }
+            tfoot{
+                tr{
+                    :first-child{
+                        text-align: right;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .footer-section{
     margin-top: 100px;
     a{
@@ -433,4 +515,9 @@ body{
             padding: 8px 12px !important;
         }
     }
+}
+
+.prelative {
+    margin: 30px;
+    padding: 30px 60px 60px 60px;
 }

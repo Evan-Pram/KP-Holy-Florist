@@ -2,8 +2,6 @@
     session_start();
     require "connection.php";
 
-    var_dump($_POST);
-
     $idorder = $_GET['id_order'];
     $iduser = $_SESSION['ID'];
     $tanggalKirim = $_POST['tanggal'];
@@ -41,6 +39,7 @@
     
         // hapus record dari Cart
         $sqlHapusCart = mysqli_query($conn, "DELETE FROM cart WHERE id_order = '$idorder'");
+        header('location: myorder.php');
     }else{
         var_dump(mysqli_error($conn));
     }

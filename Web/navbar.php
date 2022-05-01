@@ -22,7 +22,7 @@
                                 log-out
                             </a>
                         <?php else: ?>
-                            <a href="dashboard.html" class="dashboard-button">
+                            <a href="admin/" class="dashboard-button">
                                 dashboard
                             </a>
                             <a href="PHP/logout-session.php" class="admin-logout-button">
@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="myorder.php">
                     MY ORDER
                 </a>
             </li>

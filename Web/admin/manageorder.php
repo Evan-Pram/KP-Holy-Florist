@@ -1,6 +1,6 @@
 <?php 
 	date_default_timezone_set("Asia/Bangkok");
-
+    require "assets/PHP/load-order.php";
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -138,15 +138,40 @@
                                     <div class="data-tables datatable-dark">
 										 <table id="dataTable3" class="display" style="width:100%"><thead class="thead-dark">
 											<tr>
-												<th>No</th>
-												<th>ID Pesanan</th>
+												<th style="width:5%">No</th>
+												<th>Kode Order</th>
 												<th>Nama Customer</th>
 												<th>Tanggal Order</th>
 												<th>Total</th>
 												<th>Status</th>
 											</tr></thead>
                                             <tbody>
-											
+											<?php foreach ($ordersList as $key=>$orders):?>
+                                            <tr onclick="window.location.href='order-detail.php?order=<?=$orders['id_order']?>'">
+                                                <td>
+                                                    <?=$key+1?>
+                                                </td>
+                                                <td>
+                                                    <a href="order-detail.php?order=<?=$orders['id_order']?>">
+                                                        <?=$orders['id_order']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <?=$namaUser[$key]['username']?>
+                                                </td>
+                                                <td>
+                                                    <?=$orders['tglDibuat']?>
+                                                </td>
+                                                <td>
+                                                    <?=$orders['total_harga']?>
+                                                </td>
+                                                <?php if($orders['status'] == "Payment"): ?>
+                                                <td>
+                                                    Menunggu Pembayaran
+                                                </td>
+                                                <?php endif; ?>
+                                            </tr>
+                                            <?php endforeach; ?>
 										    </tbody>
 										</table>
                                     </div>
