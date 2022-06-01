@@ -1,7 +1,7 @@
 <?php
     require "connection.php";
 
-    $sqlOrderlist = mysqli_query($conn, "SELECT * FROM orders");
+    $sqlOrderlist = mysqli_query($conn, "SELECT * FROM orders ORDER BY tglDibuat DESC");
     while($temp = mysqli_fetch_assoc($sqlOrderlist)){
         $ordersList[] = $temp;
         $iduser = $temp['id_user'];

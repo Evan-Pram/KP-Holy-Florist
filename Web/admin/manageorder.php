@@ -1,6 +1,7 @@
 <?php 
 	date_default_timezone_set("Asia/Bangkok");
     require "assets/PHP/load-order.php";
+    $currentDate = date('Y-m-d');
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -146,7 +147,12 @@
 												<th>Status</th>
 											</tr></thead>
                                             <tbody>
-											<?php foreach ($ordersList as $key=>$orders):?>
+											<?php 
+                                                foreach ($ordersList as $key=>$orders):
+                                                $idorder = $orders['id_order'];
+                                                $sqlDetailPengiriman = mysqli_query($conn, "SELECT * FROM detail_pengiriman WHERE id_order = '$idorder'");
+                                                $detailPengiriman = mysqli_fetch_assoc($sqlDetailPengiriman);
+                                            ?>
                                             <tr onclick="window.location.href='order-detail.php?order=<?=$orders['id_order']?>'">
                                                 <td>
                                                     <?=$key+1?>
@@ -165,9 +171,21 @@
                                                 <td>
                                                     <?=$orders['total_harga']?>
                                                 </td>
-                                                <?php if($orders['status'] == "Payment"): ?>
+                                                <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate): ?>
+                                                <td>
+                                                    PO Kadaluarsa
+                                                </td>
+                                                <?php elseif($orders['status'] == "Payment"): ?>
                                                 <td>
                                                     Menunggu Pembayaran
+                                                </td>
+                                                <?php elseif($orders['status'] == "Confirm"): ?>
+                                                <td>
+                                                    Menunggu Konfirmasi
+                                                </td>
+                                                <?php elseif($orders['status'] == "Proccess"): ?>
+                                                <td>
+                                                    Sedang Dalam Proses
                                                 </td>
                                                 <?php endif; ?>
                                             </tr>

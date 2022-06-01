@@ -69,8 +69,14 @@
                             no.Rek : <?=$metodePembayaran[$i]['noRek']?>
                         </td>
                         <td class="text-center">
-                            <?php if($orders['status'] == 'Payment'): ?>
+                            <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate): ?>
+                                PO Kadaluarsa
+                            <?php elseif($orders['status'] == 'Payment'): ?>
                                 Menunggu Pembayaran
+                            <?php elseif($orders['status'] == 'Confirm'): ?>
+                                Menunggu Konfirmasi
+                            <?php elseif($orders['status'] == 'Proccess'): ?>
+                                Sedang Dalam Proses
                             <?php endif; ?>
                         </td>
                     </tr>

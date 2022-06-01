@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2022 at 09:47 AM
+-- Generation Time: Jun 01, 2022 at 06:43 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -117,7 +117,9 @@ INSERT INTO `detail_orders` (`id`, `id_order`, `id_produk`, `msg`, `msg_from`) V
 (4, 'PO-20220425000419', 1, 'di coba', 'masih di coba'),
 (5, 'PO-20220425120452', 3, 'test', 'test'),
 (6, 'PO-20220425120452', 2, 'test', 'test'),
-(7, 'PO-20220425120452', 2, 'test', 'test');
+(7, 'PO-20220425120452', 2, 'test', 'test'),
+(8, 'PO-20220601130649', 7, 'Happy Birthday', 'benny'),
+(9, 'PO-20220601130656', 3, 'test', 'test juga');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,9 @@ INSERT INTO `detail_pengiriman` (`id`, `id_order`, `tgl_pengiriman`, `nama_pengi
 (1, 'PO-20220423000420', '2022-04-27', 'bagong', '12345', 'kota baru driyorejo', 'marteen', '2022-04-24 16:11:51'),
 (2, 'PO-20220423140416', '2022-05-06', 'bagong', '1234', 'wiyung', 'asdas', '2022-04-24 16:11:51'),
 (3, 'PO-20220425000419', '2022-04-30', 'thanos', '1234567890', 'Kriyan gang 4 blok G no.72', 'yanto', '2022-04-24 17:00:53'),
-(4, 'PO-20220425120452', '2022-05-06', 'thanos', '112233', 'kota baru driyorejo', 'marteen', '2022-04-26 20:17:14');
+(4, 'PO-20220425120452', '2022-05-06', 'thanos', '112233', 'kota baru driyorejo', 'marteen', '2022-04-26 20:17:14'),
+(5, 'PO-20220601130649', '2022-06-05', 'benny', '123456789', 'kota baru driyorejo', 'suryanto', '2022-06-01 06:20:35'),
+(6, 'PO-20220601130656', '2022-06-09', 'bagong', '123456789', 'kota baru driyorejo', 'yanto', '2022-06-01 06:23:29');
 
 -- --------------------------------------------------------
 
@@ -177,6 +181,7 @@ CREATE TABLE `orders` (
   `id_user` int(11) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `metode_pembayaran` int(11) NOT NULL,
+  `bukti_transfer` varchar(55) DEFAULT NULL,
   `status` varchar(25) NOT NULL DEFAULT 'Payment',
   `tglDibuat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -185,11 +190,13 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `id_user`, `total_harga`, `metode_pembayaran`, `status`, `tglDibuat`) VALUES
-('PO-20220423000420', 1, 547000, 1, 'Payment', '2022-04-22 17:27:45'),
-('PO-20220423140416', 1, 479000, 1, 'Payment', '2022-04-23 14:06:42'),
-('PO-20220425000419', 1, 550000, 2, 'Payment', '2022-04-24 17:00:53'),
-('PO-20220425120452', 1, 1679000, 2, 'Payment', '2022-04-26 20:17:14');
+INSERT INTO `orders` (`id_order`, `id_user`, `total_harga`, `metode_pembayaran`, `bukti_transfer`, `status`, `tglDibuat`) VALUES
+('PO-20220423000420', 1, 547000, 1, NULL, 'Payment', '2022-04-22 17:27:45'),
+('PO-20220423140416', 1, 479000, 1, NULL, 'Payment', '2022-04-23 14:06:42'),
+('PO-20220425000419', 1, 550000, 2, '62932ff959b20.png', 'Confirm', '2022-04-24 17:00:53'),
+('PO-20220425120452', 1, 1679000, 2, '62824d52af857.png', 'Proccess', '2022-04-26 20:17:14'),
+('PO-20220601130649', 1, 570000, 1, NULL, 'Payment', '2022-06-01 06:20:35'),
+('PO-20220601130656', 1, 479000, 2, NULL, 'Payment', '2022-06-01 06:23:29');
 
 -- --------------------------------------------------------
 
@@ -315,25 +322,25 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `detail_cart`
 --
 ALTER TABLE `detail_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `detail_pengiriman`
 --
 ALTER TABLE `detail_pengiriman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kategori`

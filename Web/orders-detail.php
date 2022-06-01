@@ -45,7 +45,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
-                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <form id="upload-bukti-tf" action="" method="post" enctype="multipart/form-data">
                                         <div class="row invoice-info p-3">
                                             <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate):?>
                                             <a href="#" class="content-table mb-3">
@@ -145,11 +145,12 @@
                                         </div>
                                         <div class="card-body row">
                                             <div class="form-group col-md-4">
-                                                <label for="exampleInputFile">Gambar Barang</label>
+                                                <label class="feedback-bukti-tf" for="exampleInputFile">Gambar Barang</label>
                                                 <img src="dist/img/img-src-barang/" alt="" class="image-box mb-3">
                                                 <div class="input-group">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input"
+                                                        <input type="hidden" name="orders-id" value="<?=$idorder?>">
+                                                        <input type="file" class="custom-file-input input-bukti-tf"
                                                             id="exampleInputFile" name="buktiTransfer">
                                                         <label class="custom-file-label" for="exampleInputFile">Choose
                                                             file</label>
@@ -159,7 +160,7 @@
                                             <div class="form-group col-md-6">
                                                 <?php if($orders['status'] != 'Payment'): ?>
                                                     <label>Gambar Bukti Transfer</label>
-                                                    <img src=""
+                                                    <img src="Asset/img/bukti-transfer/<?=$orders['bukti_transfer']?>"
                                                         alt="" class="w-100">
                                                 <?php endif; ?>
                                             </div>
@@ -269,6 +270,8 @@
     </script>
     <script src="Asset/js/jquery-3.6.0.js"></script>
     <script src="Asset/js/home.js"></script>
+    <!-- script untuk form upload bukti transfer -->
+    <script src="Asset/js/form-bukti-tf.js"></script>
 </body>
 
 </html>

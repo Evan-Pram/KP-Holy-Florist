@@ -22,6 +22,7 @@ $(document).ready(function(){
             $('.feedback-tambah-gambar').addClass('text-danger');
             $('.feedback-tambah-gambar').text('Gambar (Tidak Boleh kosong)');
         }else{
+            // buat variabel formdata untuk dilempar ke php lewat ajax
             var form = $('#form-tambah-barang')[0];
             var data = new FormData(form);
             

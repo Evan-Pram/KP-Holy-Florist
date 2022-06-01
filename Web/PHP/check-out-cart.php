@@ -39,7 +39,7 @@
     
         // hapus record dari Cart
         $sqlHapusCart = mysqli_query($conn, "DELETE FROM cart WHERE id_order = '$idorder'");
-        header('location: myorder.php');
+        header('location: ../myorder.php');
     }else{
         var_dump(mysqli_error($conn));
     }
