@@ -29,7 +29,7 @@
         <div class="container-page-detail mx-auto">
             <form  method="post" action="PHP/add-cart.php?id=<?=$idbarang?>" id="form-pesan-barang">
                 <div class="row gx-5">
-                    <div class="col-md-7">
+                    <div class="col-md-7 mobile-image-container-detail">
                         <img src="Asset/img/barang/<?= $barang['gambar'] ?>" alt="" class="w-100">
                     </div>
                     <div class="col-md-5">

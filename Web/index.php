@@ -40,7 +40,9 @@
               <div class="col-md-3">
                 <div class="post-container position-relative">
                   <a href="page-detail.php?id=<?= $listBarang[$i]['id_Barang'] ?>" class="">
+                  <div class="mobile-image-container">
                     <img src="Asset/img/barang/<?= $listBarang[$i]['gambar'] ?>" class="item-image-home"></img>
+                  </div>
                     <p class="item-name pt-3 block">
                       <?php echo $listBarang[$i]['nama'] ?>
                     </p>
