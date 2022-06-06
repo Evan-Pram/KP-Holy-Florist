@@ -2,6 +2,11 @@
     session_start();
     date_default_timezone_set('Asia/Bangkok');
     require 'connection.php';
+
+    if(!isset($_SESSION['userLoged'])){
+        header('location: ../login.php');
+    }
+
     $idbarang = $_GET['id'];
     $iduser = $_SESSION['ID'];
     $sqlCekCart = mysqli_query($conn, "SELECT * FROM cart WHERE id_user = $iduser");
