@@ -1,7 +1,7 @@
 $("#register").submit(function(){
     resetFormjs();
 
-    if($("#username").val().length == 0 || $("#email").val().length == 0 || $("#password").val().length == 0 || $("#retypePass").val().length == 0){
+    if($("#username").val().length == 0 || $("#email").val().length == 0 || $("#password").val().length == 0 || $("#retypePass").val().length == 0 || $("#noTelp").val().length == 0){
         if($("#username").val().length == 0){
             $(".feedback-username").removeClass("d-none");
             $(".feedback-username").text("*Tidak boleh kosong");
@@ -17,6 +17,11 @@ $("#register").submit(function(){
             $(".feedback-email").removeClass("d-none");
             $(".feedback-email").text("*email sudah digunakan");
             $("#email").css({"border-color":"red"});
+        }
+        if($("#email").val().length == 0){
+            $(".feedback-noTelp").removeClass("d-none");
+            $(".feedback-noTelp").text("*Tidak boleh Kosong");
+            $("#noTelp").css({"border-color":"red"});
         }
         if($("#password").val().length == 0){
             $(".feedback-password").removeClass("d-none");

@@ -46,41 +46,51 @@
                             Status
                         </th>
                     </tr>
-                    <?php $i=0;foreach ($listOrders as $orders):
-                            $idorder = $orders['id_order'];
-                            $sqlDetailPengiriman = mysqli_query($conn, "SELECT * FROM detail_pengiriman WHERE id_order = '$idorder'");
-                            $detailPengiriman = mysqli_fetch_assoc($sqlDetailPengiriman);
-                    ?>
-                    <tr class="list-order" onclick="window.location.href='orders-detail.php?order=<?=$orders['id_order']?>'">
-                        <td>
-                            <?=$i+1?>
-                        </td>
-                        <td class="text-center">
-                            <?=$orders['id_order']?>
-                        </td>
-                        <td class="text-center">
-                            <?=$detailPengiriman['tgl_pengiriman']?>
-                        </td>
-                        <td class="text-center">
-                            Rp. <?=number_format($orders['total_harga'])?>
-                        </td>
-                        <td class="text-center">
-                            <?=$metodePembayaran[$i]['metode']?><br>
-                            no.Rek : <?=$metodePembayaran[$i]['noRek']?>
-                        </td>
-                        <td class="text-center">
-                            <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate): ?>
-                                PO Kadaluarsa
-                            <?php elseif($orders['status'] == 'Payment'): ?>
-                                Menunggu Pembayaran
-                            <?php elseif($orders['status'] == 'Confirm'): ?>
-                                Menunggu Konfirmasi
-                            <?php elseif($orders['status'] == 'Proccess'): ?>
-                                Sedang Dalam Proses
-                            <?php endif; ?>
+                    <?php if($noOrders): ?>
+                    <tr>
+                        <td colspan='6' class='text-center no-orders'>
+                            Tidak ada Orderan
                         </td>
                     </tr>
-                    <?php $i++;endforeach;?>
+                    <?php else: ?>
+                        <?php $i=0;foreach ($listOrders as $orders):
+                                $idorder = $orders['id_order'];
+                                $sqlDetailPengiriman = mysqli_query($conn, "SELECT * FROM detail_pengiriman WHERE id_order = '$idorder'");
+                                $detailPengiriman = mysqli_fetch_assoc($sqlDetailPengiriman);
+                        ?>
+                        <tr class="list-order" onclick="window.location.href='orders-detail.php?order=<?=$orders['id_order']?>'">
+                            <td>
+                                <?=$i+1?>
+                            </td>
+                            <td class="text-center">
+                                <?=$orders['id_order']?>
+                            </td>
+                            <td class="text-center">
+                                <?=$detailPengiriman['tgl_pengiriman']?>
+                            </td>
+                            <td class="text-center">
+                                Rp. <?=number_format($orders['total_harga'])?>
+                            </td>
+                            <td class="text-center">
+                                <?=$metodePembayaran[$i]['metode']?><br>
+                                no.Rek : <?=$metodePembayaran[$i]['noRek']?>
+                            </td>
+                            <td class="text-center">
+                                <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate): ?>
+                                    PO Kadaluarsa
+                                <?php elseif($orders['status'] == 'Payment'): ?>
+                                    Menunggu Pembayaran
+                                <?php elseif($orders['status'] == 'Confirm'): ?>
+                                    Menunggu Konfirmasi
+                                <?php elseif($orders['status'] == 'Proccess'): ?>
+                                    Sedang Dalam Proses
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php $i++;endforeach;?>
+                    <?php endif; ?>
+
+
                 </table>
             </div>
         </section>

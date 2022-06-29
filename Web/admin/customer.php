@@ -1,3 +1,7 @@
+<?php
+    require 'assets/PHP/load-user.php';
+?>
+
 <head>
     <meta charset="utf-8">
 	<link rel="icon" 
@@ -134,11 +138,25 @@
 												<th>No</th>
 												<th>Nama Pelanggan</th>
 												<th>No. Telepon</th>
-												<th>Alamat</th>
 												<th>Email</th>
 											</tr></thead>
                                             <tbody>
-											
+                                            <?php $i=1;foreach($listUser as $user): ?>
+                                            <tr>
+                                                <td>
+                                                    <?php echo $i ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $user['username'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $user['noTelp'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $user['email'] ?>
+                                                </td>
+                                            </tr>
+                                            <?php $i++;endforeach;?>
 										    </tbody>
 										</table>
                                     </div>

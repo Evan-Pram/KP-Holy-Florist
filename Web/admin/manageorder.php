@@ -187,6 +187,10 @@
                                                 <td>
                                                     Sedang Dalam Proses
                                                 </td>
+                                                <?php elseif($orders['status'] == "Send"): ?>
+                                                <td>
+                                                    Dalam Pengiriman
+                                                </td>
                                                 <?php endif; ?>
                                             </tr>
                                             <?php endforeach; ?>

@@ -58,6 +58,14 @@
                 </div>
                 <div class="input mb-3">
                     <div class="input-group">
+                        <input type="number" class="form-control" name="noTelp" id="noTelp" placeholder="No. Telepon">
+                    </div>
+                    <div class="feedback feedback-noTelp d-none text-danger">
+                        lol
+                    </div>
+                </div>
+                <div class="input mb-3">
+                    <div class="input-group">
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="feedback feedback-password d-none text-danger">

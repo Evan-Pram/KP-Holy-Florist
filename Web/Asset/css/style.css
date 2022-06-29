@@ -399,6 +399,10 @@ body {
 .section-1-order .metode-pembayaran-container {
   width: 20%;
 }
+.section-1-order .no-orders {
+  font-size: 20px;
+  padding: 20px;
+}
 .section-1-order-detail .card form a {
   text-decoration: none;
 }

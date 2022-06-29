@@ -1,5 +1,7 @@
 <?php
+	date_default_timezone_set("Asia/Bangkok");
     require '../PHP/connection.php';
+    require 'assets/PHP/admin-dashboard-index.php';
     $itungCust = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(id_User) as jumlahCust FROM user WHERE status = 2"));
     $itungCust = $itungCust['jumlahCust'];
 ?>
@@ -148,7 +150,7 @@
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Pelanggan</h4>
+                                        <h4 class="header-title mb-0">Pengguna</h4>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
                                         <h1><?php echo $itungCust ?></h1>
@@ -162,10 +164,10 @@
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-book"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Pesanan</h4>
+                                        <h4 class="header-title mb-0">Pesanan Baru</h4>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
-                                        <h1><?php echo $itungorder3 ?></h1>
+                                        <h1><?php echo $pesananBaru ?></h1>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +180,7 @@
                                         <h4 class="header-title mb-0">Konfirmasi Pembayaran</h4>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
-                                        <h1><?php echo $itungtrans3 ?></h1>
+                                        <h1><?php echo $konfirmasiPembayaran ?></h1>
                                     </div>
 									<!--
 									<button type="button" class="<?php 

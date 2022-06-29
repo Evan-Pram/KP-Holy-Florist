@@ -382,6 +382,7 @@
     <script src="assets/js/produk-modal-fill.js"></script>
     <script src="assets/js/edit-item-process.js"></script>
     <script src="assets/js/form-add-item.js"></script>
+    <script src="assets/js/pencarian-produk.js"></script>
 	
 </body>
 </html>
