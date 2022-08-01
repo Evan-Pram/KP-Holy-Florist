@@ -71,7 +71,7 @@
 							<li><a href="customer.php"><span>Kelola Pelanggan</span></a></li>
 							<li class="active"><a href="user.php"><span>Kelola Staff</span></a></li>
                             <li>
-                                <a href="../logout.php"><span>Logout</span></a>
+                                <a href="logout.php"><span>Logout</span></a>
                                 
                             </li>
                             

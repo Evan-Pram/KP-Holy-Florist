@@ -1,7 +1,6 @@
 <?php
   session_start();
   require 'PHP/load-home.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +62,53 @@
             </div>
             <div class="page-number">
               <ul>
-                <li>
+                <?php if(!isset($_GET['keyword'])): ?>
+                  <?php if($page > 1): ?>
+                    <li>
+                      <a href="?halaman=<?=$page-1?>" class="">
+                        <
+                      </a>
+                    </li>
+                  <?php endif; ?>
+                  <?php for($i=1;$i<=$pages;$i++): ?>
+                    <li>
+                      <a href="?halaman=<?=$i?>" class="<?php if($i == $page) echo 'active-page' ?>">
+                        <?= $i ?>
+                      </a>
+                    </li>
+                  <?php endfor; ?>
+                  <?php if($page < $pages): ?>
+                    <li>
+                      <a href="?halaman=<?=$page+1?>" class="">
+                        >
+                      </a>
+                    </li>
+                  <?php endif; ?>
+                <?php elseif(isset($_GET['keyword'])): ?>
+                  <?php if($page > 1): ?>
+                    <li>
+                      <a href="?halaman=<?=$page-1 . '&keyword='.$_GET['keyword']?>" class="">
+                        <
+                      </a>
+                    </li>
+                  <?php endif; ?>
+                  <?php for($i=1;$i<=$pages;$i++): ?>
+                    <li>
+                      <a href="?halaman=<?=$i . '&keyword='.$_GET['keyword'] ?>" class="<?php if($i == $page) echo 'active-page' ?>">
+                        <?= $i ?>
+                      </a>
+                    </li>
+                  <?php endfor; ?>
+                  <?php if($page < $pages): ?>
+                    <li>
+                      <a href="?halaman=<?=$page+1 . '&keyword='.$_GET['keyword'] ?>" class="">
+                        >
+                      </a>
+                    </li>
+                  <?php endif; ?>
+                <?php endif; ?>
+
+                <!-- <li>
                   <a href="#" class="active-page">
                     1
                   </a>
@@ -92,7 +137,7 @@
                   <a href="#" class="">
                     >
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -174,6 +219,16 @@
   </script>
   <script src="Asset/js/jquery-3.6.0.js"></script>
   <script src="Asset/js/home.js"></script>
+  <!-- script for showing search box -->
+  <script>
+    $(".search-box").removeClass("d-none");
+    // $(".pencarian-home").submit(function (e){
+    //   e.preventDefault();
+    //   if($(".keyword").val().length > 0){
+    //     return false;
+    //   }
+    // })
+  </script>
 </body>
 
 </html>
