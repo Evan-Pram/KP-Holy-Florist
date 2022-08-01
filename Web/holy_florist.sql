@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2022 at 06:43 AM
+-- Generation Time: Aug 01, 2022 at 03:14 PM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -43,7 +43,7 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_Barang`, `nama`, `jenis`, `model`, `ukuran`, `harga`, `gambar`, `status`) VALUES
-(1, 'Karangan Bunga Titik 3', 'Papan Bunga', 'Printing/Cetak', '240x140', 550000, '6253b861baac3.png', 1),
+(1, 'Karangan Bunga Titik 3', 'Papan Bunga', 'Printing/Cetak', '240x140', 550000, '6253b861baac3.png', 0),
 (2, 'Karangan Bunga Titik 3 Besar', 'Papan Bunga', 'Printing/Cetak', '240x140', 600000, '6253b86a0fffd.png', 1),
 (3, 'Karangan Bunga Titik 1', 'Papan Bunga', 'Printing/Cetak', '240x140', 479000, '6253b870ea4f8.png', 1),
 (4, 'Karangan Bunga Titik 2 Atas Bawah', 'Papan Bunga', 'Printing/Cetak', '240x140', 547000, '6253b87872309.png', 1),
@@ -69,7 +69,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id_cart`, `id_order`, `id_user`, `tglDibuat`) VALUES
-(2, 'PO-20220419160408', 3, '2022-04-22 17:27:11');
+(2, 'PO-20220419160408', 3, '2022-04-22 17:27:11'),
+(3, 'PO-20220606210617', 1, '2022-06-06 14:44:17');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,8 @@ CREATE TABLE `detail_cart` (
 
 INSERT INTO `detail_cart` (`id`, `id_order`, `id_produk`, `msg`, `msg_from`) VALUES
 (4, 'PO-20220419160408', 2, 'test', 'test'),
-(5, 'PO-20220419160408', 1, 'test', 'test');
+(5, 'PO-20220419160408', 1, 'test', 'test'),
+(6, 'PO-20220606210617', 2, 'asd', 'asd');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,8 @@ INSERT INTO `detail_orders` (`id`, `id_order`, `id_produk`, `msg`, `msg_from`) V
 (6, 'PO-20220425120452', 2, 'test', 'test'),
 (7, 'PO-20220425120452', 2, 'test', 'test'),
 (8, 'PO-20220601130649', 7, 'Happy Birthday', 'benny'),
-(9, 'PO-20220601130656', 3, 'test', 'test juga');
+(9, 'PO-20220601130656', 3, 'test', 'test juga'),
+(10, 'PO-20220629100629', 3, 'ini pesan ditulis', 'yanto');
 
 -- --------------------------------------------------------
 
@@ -148,7 +151,8 @@ INSERT INTO `detail_pengiriman` (`id`, `id_order`, `tgl_pengiriman`, `nama_pengi
 (3, 'PO-20220425000419', '2022-04-30', 'thanos', '1234567890', 'Kriyan gang 4 blok G no.72', 'yanto', '2022-04-24 17:00:53'),
 (4, 'PO-20220425120452', '2022-05-06', 'thanos', '112233', 'kota baru driyorejo', 'marteen', '2022-04-26 20:17:14'),
 (5, 'PO-20220601130649', '2022-06-05', 'benny', '123456789', 'kota baru driyorejo', 'suryanto', '2022-06-01 06:20:35'),
-(6, 'PO-20220601130656', '2022-06-09', 'bagong', '123456789', 'kota baru driyorejo', 'yanto', '2022-06-01 06:23:29');
+(6, 'PO-20220601130656', '2022-06-09', 'bagong', '123456789', 'kota baru driyorejo', 'yanto', '2022-06-01 06:23:29'),
+(7, 'PO-20220629100629', '2022-07-01', 'benny', '123456', 'kota baru driyorejo', 'marteen', '2022-06-29 03:30:47');
 
 -- --------------------------------------------------------
 
@@ -196,7 +200,8 @@ INSERT INTO `orders` (`id_order`, `id_user`, `total_harga`, `metode_pembayaran`,
 ('PO-20220425000419', 1, 550000, 2, '62932ff959b20.png', 'Confirm', '2022-04-24 17:00:53'),
 ('PO-20220425120452', 1, 1679000, 2, '62824d52af857.png', 'Proccess', '2022-04-26 20:17:14'),
 ('PO-20220601130649', 1, 570000, 1, NULL, 'Payment', '2022-06-01 06:20:35'),
-('PO-20220601130656', 1, 479000, 2, NULL, 'Payment', '2022-06-01 06:23:29');
+('PO-20220601130656', 1, 479000, 2, NULL, 'Payment', '2022-06-01 06:23:29'),
+('PO-20220629100629', 4, 479000, 2, '62bbc791618f9.png', 'Proccess', '2022-06-29 03:30:47');
 
 -- --------------------------------------------------------
 
@@ -219,7 +224,16 @@ CREATE TABLE `pembayaran` (
 
 INSERT INTO `pembayaran` (`id`, `metode`, `noRek`, `logo`, `an`, `status`) VALUES
 (1, 'test', '12345', 'test.png', 'test', 1),
-(2, 'another test', '1122334455', 'this one is test again', 'another test to', 0);
+(2, 'another test', '1122334455', 'this one is test again', 'another test to', 0),
+(3, 'BCA', '12345668', 'this one is test again', 'bagong', 0),
+(4, 'BCA', '1122334455', 'test.png', 'another test to', 1),
+(5, 'BCA', '1122334455', 'this one is test again', 'bagong', 1),
+(6, 'another test', '1122334455', 'this one is test again', 'another test to', 1),
+(7, 'test', '12345', 'this one is test again', 'test', 1),
+(8, 'BCA', '12345', 'this one is test again', 'another test to', 1),
+(9, 'test', '1122334455', 'test.png', 'test', 1),
+(10, 'BCA', '12345', 'this one is test again', 'test', 1),
+(11, 'test', '1122334455', 'this one is test again', 'test', 1);
 
 -- --------------------------------------------------------
 
@@ -230,6 +244,7 @@ INSERT INTO `pembayaran` (`id`, `metode`, `noRek`, `logo`, `an`, `status`) VALUE
 CREATE TABLE `user` (
   `id_User` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `noTelp` varchar(15) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '2',
@@ -240,10 +255,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_User`, `username`, `password`, `email`, `status`, `tglDibuat`) VALUES
-(1, 'EvanPram', '$2y$10$Cxa7sZf5CbAFJG8fsXV1XeI0aAFL0Hq3L6Bp0tp2TNZRzAbWYSxZO', 'steve696974@gmail.com', 2, '2022-04-23 08:49:04'),
-(2, 'Steve__74', '$2y$10$mocZLWyHYsd6bBrxWZJAA.8F1G4ZkCWgqgfUwWQGD9i/lWpGDqvvK', 'admin@admin.admin', 1, '2022-04-23 08:49:04'),
-(3, 'laptopcantik', '$2y$10$bk9wWhUuyhxMlzFONCJ7xOCVubqSdcOs3lXn9/Kr8HySUzHLQeQ9.', '123@123.123', 2, '2022-04-23 08:49:04');
+INSERT INTO `user` (`id_User`, `username`, `noTelp`, `password`, `email`, `status`, `tglDibuat`) VALUES
+(1, 'EvanPram', '123456789', '$2y$10$Cxa7sZf5CbAFJG8fsXV1XeI0aAFL0Hq3L6Bp0tp2TNZRzAbWYSxZO', 'steve696974@gmail.com', 2, '2022-04-23 08:49:04'),
+(2, 'Steve__74', '123456789', '$2y$10$mocZLWyHYsd6bBrxWZJAA.8F1G4ZkCWgqgfUwWQGD9i/lWpGDqvvK', 'admin@admin.admin', 1, '2022-04-23 08:49:04'),
+(3, 'laptopcantik', '123456789', '$2y$10$bk9wWhUuyhxMlzFONCJ7xOCVubqSdcOs3lXn9/Kr8HySUzHLQeQ9.', '123@123.123', 2, '2022-04-23 08:49:04'),
+(4, 'Steve__74', '123456789', '$2y$10$Nu9ndQOi9wDqkhUG9ea3y.46nDkaMQinnnGT.Acls/yUK993lcgiC', 'fmilk175@gmail.com', 2, '2022-06-29 03:28:06'),
+(6, '@dwi_riooo', '124578963', '$2y$10$/7Nne8p/7Al9x7c5Q0Mcq.5vZhXbZ4ZNj5drA//2HOtjv.mjnsUbu', 'aku@dwiRio.com', 2, '2022-06-29 15:44:51');
 
 --
 -- Indexes for dumped tables
@@ -322,25 +339,25 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detail_cart`
 --
 ALTER TABLE `detail_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `detail_pengiriman`
 --
 ALTER TABLE `detail_pengiriman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -352,13 +369,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_User` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
