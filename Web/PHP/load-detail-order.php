@@ -1,5 +1,6 @@
 <?php
     require "connection.php";
+    $POKadaluarsa = false;
 
     if(isset($_GET['order'])){
         $idorder = $_GET['order'];

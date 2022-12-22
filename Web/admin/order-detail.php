@@ -283,8 +283,7 @@
                                                                             Pembayaran</button>
                                                                         </form>
                                                                         <?php elseif($orders['status'] == 'Proccess'): ?>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary">Kirim Pesanan</button>
+                                                                        <button type="button" data-toggle="modal" data-target="#modalKirimBarang" class="btn btn-primary">Kirim Pesanan</button>
                                                                         <?php endif; ?>
                                                                     </div>
                                                                 </div>
@@ -346,6 +345,66 @@
     <!-- footer area end-->
     </div>
     <!-- page container area end -->
+
+    <!-- model edit barang -->
+    <div id="modalKirimBarang" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Kirim Pesanan</h4>
+						</div>
+						
+						<div class="modal-body">
+						<form id="form-edit-barang" action="" method="post" enctype="multipart/form-data" >
+								<div class="form-group">
+									<label>Nama Produk</label>
+									<input name="namaproduk" type="text" class="form-control edit-input-nama" required autofocus>
+                                    <input type="hidden" name="idBarang" class="edit-input-id">
+								</div>
+								<div class="form-group">
+									<label>Nama Kategori</label>
+									<select name="kategori" class="form-control edit-input-kategori">
+                                        <option hidden selected>--Pilih Kategori--</option>
+                                        <?php foreach($listKategori as $kategori): ?>
+                                            <option value="<?= $kategori['nama'] ?>"><?= $kategori['nama'] ?></option>
+                                        <?php endforeach; ?>
+									</select>
+								</div>
+								<div class="form-group input-model">
+									<label>Model</label>
+									<input name="model"  type="text" class="form-control edit-input-model" required>
+								</div>
+								<div class="form-group input-ukuran">
+                                    <label>Ukuran (cm)</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input name="panjang" type="number" class="form-control edit-input-panjang" placeholder="panjang" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input name="lebar" type="number" class="form-control edit-input-lebar" placeholder="Lebar" required>
+                                        </div>
+                                    </div>
+								</div>
+                                <div class="form-group input-harga">
+									<label>Harga (Rp.)</label>
+									<input name="harga"  type="number" class="form-control edit-input-harga" required>
+								</div>
+								<div class="form-group">
+									<label class="feedback-edit-gambar">Gambar</label>
+									<input name="uploadgambar" type="file" class="form-control edit-input-gambar">
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+								<input name="editProduct" type="submit" id="editProduct" class="btn btn-primary" value="Ubah Barang">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	
+	<script>
 
     <script>
         $(document).ready(function () {

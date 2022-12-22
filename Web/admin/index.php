@@ -1,7 +1,11 @@
 <?php
 	date_default_timezone_set("Asia/Bangkok");
+    session_start();
     require '../PHP/connection.php';
     require 'assets/PHP/admin-dashboard-index.php';
+    if(!isset($_SESSION["userLoged"]) && !isset($_SESSION["adminLoged"]) ){
+        header("location: ../");
+    };
     $itungCust = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(id_User) as jumlahCust FROM user WHERE status = 2"));
     $itungCust = $itungCust['jumlahCust'];
 ?>

@@ -6,7 +6,7 @@
     if(isset($_SESSION['userLoged'])){
         $iduser = $_SESSION['ID'];
 
-        $sqlOrders = mysqli_query($conn, "SELECT * FROM orders WHERE id_user = $iduser");
+        $sqlOrders = mysqli_query($conn, "SELECT * FROM orders WHERE id_user = $iduser ORDER BY tglDibuat DESC");
         $cekOrders = mysqli_num_rows($sqlOrders);
         $noOrders = false;
 

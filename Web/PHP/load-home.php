@@ -2,7 +2,7 @@
     require 'connection.php';
 
     //pagination logic star
-    $perPage = 2;
+    $perPage = 10;
     $page = 0;
     
     if(isset($_GET['halaman'])){
@@ -52,5 +52,5 @@
     
 
 
-    var_dump($page,$mulai,$pages,$jumlahBarang);
+    // var_dump($page,$mulai,$pages,$jumlahBarang);
 ?>

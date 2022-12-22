@@ -40,14 +40,24 @@
                                 <!-- general form elements -->
                                 <?php if(isset($_GET['order'])): ?>
                                 <div class="card card-success">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Data Tranksaksi</h3>
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="container-header">
+                                            <h3 class="card-title">Data Tranksaksi</h3>
+                                        </div>
+                                        <div class="container-back">
+                                            <a href="myorder.php">
+                                                <i class="fa fa-arrow-circle-left"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
                                     <form id="upload-bukti-tf" action="" method="post" enctype="multipart/form-data">
                                         <div class="row invoice-info p-3">
-                                            <?php if($detailPengiriman['tgl_pengiriman'] <= $currentDate):?>
+                                            <?php 
+                                                if($detailPengiriman['tgl_pengiriman'] <= $currentDate):
+                                                    $POKadaluarsa = true;
+                                            ?>
                                             <a href="#" class="content-table mb-3">
                                                 <i class="fas fa-circle kadaluarsa"></i>
                                                 PO Kadaluarsa
@@ -143,6 +153,7 @@
                                             </div>
                                             <!-- /.col -->
                                         </div>
+                                        <?php if(!$POKadaluarsa): ?>
                                         <div class="card-body row">
                                             <div class="form-group col-md-4">
                                                 <label class="feedback-bukti-tf" for="exampleInputFile">Gambar Barang</label>
@@ -171,8 +182,9 @@
                                         <!-- Buttonnya nanti hanya diperuntukan admin -->
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary"
-                                                name="addBuktiTransfer">Edit</button>
+                                            name="addBuktiTransfer">Edit</button>
                                         </div>
+                                        <?php endif; ?>
                                     </form>
                                 </div>
                                 <?php else: ?>
